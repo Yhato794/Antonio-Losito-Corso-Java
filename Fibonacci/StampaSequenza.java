@@ -15,6 +15,9 @@ public class StampaSequenza {
             
              if(n3%2==0){
                 System.out.println("Numeri pari della serie: "+n3);
+             }else {
+                System.out.println("Numeri dispari della serie: "+n3);
+
              }
         }
         scelta.close();
