@@ -20,7 +20,7 @@ public class dirigenza {
 
     }
     public void insBoss() {
-        System.out.println("Inserisci dirigente");
+        System.out.println("Inserisci boss");
         Scanner input = new Scanner(System.in);
         String s = input.nextLine();
         boss=s;
