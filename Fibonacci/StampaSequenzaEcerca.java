@@ -28,7 +28,8 @@ public class StampaSequenzaEcerca {
         scelta.close();
     }
 
-    public static void RicercaPD(ArrayList<Integer> sequenza, int sceltaNumeroUtente) { // Ricerca e Divisione Pari/Dispari
+    public static void RicercaPD(ArrayList<Integer> sequenza, int sceltaNumeroUtente) { // Ricerca e Divisione
+                                                                                        // Pari/Dispari
         boolean b = false;
         int x = 0;
         for (int i = 0; i < sequenza.size(); i++) {
@@ -46,7 +47,8 @@ public class StampaSequenzaEcerca {
         StampaRisultati(b, sceltaNumeroUtente, x);
     }
 
-    public static ArrayList<Integer> CreaSequenza(ArrayList<Integer> sequenza, int loop) { //Creazione Successione di Fibonacci
+    public static ArrayList<Integer> CreaSequenza(ArrayList<Integer> sequenza, int loop) { // Creazione Successione di
+                                                                                           // Fibonacci
 
         if (sequenza.size() == loop) {
             return sequenza;
