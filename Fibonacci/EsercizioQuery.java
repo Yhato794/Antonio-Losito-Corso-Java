@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
-import javax.sound.midi.SysexMessage;
+import com.mysql.cj.util.DnsSrv.SrvRecord;
 
 public class EsercizioQuery {
     public static void main(String[] args) {
@@ -18,12 +18,10 @@ public class EsercizioQuery {
                 System.out.println("Connessione fallita");
             }
             // Prova lettura db
-            String query = "SELECT Code, CASE WHEN 0!=? THEN name else 'nome nascosto' end as Nome, Population FROM world.country where Population >= ? && Code like (?) ;";
-            PreparedStatement stm = conn.prepareStatement(query);
-            System.out.println();
+
             System.out.println("Inserisci Codice nazione");
             Scanner nazCode = new Scanner(System.in);
-            String codInput ="%"+ nazCode.nextLine()+"%";
+            String codInput = "%" + nazCode.nextLine() + "%";
             System.out.println("Inserisci controllo popolazione superiore a:");
             Scanner pop = new Scanner(System.in);
             int popInput = pop.nextInt();
@@ -33,19 +31,17 @@ public class EsercizioQuery {
             System.out.println("Ordina 1:crescente o 2:decrescente?");
             Scanner ord = new Scanner(System.in);
             int ordInput = ord.nextInt();
-            String tempOrd = " ASC ";
+            String tempOrd;
             if (ordInput == 1) {
-                
+                tempOrd = "ASC";
             } else {
-                tempOrd = " DESC ";
+                tempOrd = "DESC";
             }
-
+            String query = "SELECT Code, CASE WHEN 0!=? THEN name else 'nome nascosto' end as Nome, Population FROM world.country where Population >= ? && Code like (?) Order by population "+tempOrd;
+            PreparedStatement stm = conn.prepareStatement(query);
             stm.setInt(1, nome);
             stm.setInt(2, popInput);
             stm.setString(3, codInput);
-          
-
-
 
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
