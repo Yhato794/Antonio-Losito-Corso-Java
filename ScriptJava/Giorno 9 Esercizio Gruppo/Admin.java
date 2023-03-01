@@ -1,56 +1,42 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Registrazione {
+public class Admin {
+    private static Scanner interi = new Scanner(System.in);
     private static Scanner stringa = new Scanner(System.in);
 
-    private static Scanner interi = new Scanner(System.in);
+    ArrayList<String> nome = new ArrayList<>();
+    ArrayList<String> password = new ArrayList<>();
+    private final int[] authCode = { 0000, 1111 };
 
-    public static void main(String[] args) {
-
-        Utente utenteObj = new Utente();
-        showFirstMenu1(utenteObj);
-
-    }
-
-    public static void showFirstMenu1(Utente utenteObj) {
+    public static void menuAdmin() {
+        Admin admin = new Admin();
         boolean exit = false;
         while (!exit) {
-            System.out.println("Vuoi 1:Registrare 2:Loggare 3:Visualizza Account in memoria 4:uscire \nInserisci codice admin per accedere al Pannello di controllo");
+            System.out.println("---------CONTROL PANEL---------");
+            System.out.println("Vuoi 1:Registrare 2:Login 3:Visualizza 4:uscire");
             int scelta = interi.nextInt();
             switch (scelta) {
                 case 1:
-                    registrazione(utenteObj);
+                    registrazioneAdmin(admin);
                     break;
                 case 2:
-                    logIn(utenteObj);
+                    // logInAdmin(admin);
                     break;
                 case 3:
-                    visualizza(utenteObj);
+                    visualizzaAdmin(admin);
                     break;
                 case 4:
                     exit = true;
                     break;
-                case 0000:
-                case 1111:
-                    Admin.menuAdmin();
-                break;
 
             }
         }
 
     }
 
-    public static void visualizza(Utente x) {
-        for (int i = 0; i < x.nome.size(); i++) {
-            System.out.println("Nome:" + x.nome.get(i));
-            System.out.println("---------------------------------------");
-        }
-
-    }
-
-    public static void registrazione(Utente x) {
+    public static void registrazioneAdmin(Admin x) {
         String nomeTemp = "";
-        
         boolean exit = false;
         boolean errore = false;
         while (!exit) {
@@ -61,7 +47,6 @@ public class Registrazione {
                     System.out.println("Account già in memoria");
                     errore = true;
                 } else {
-
                     errore = false;
                 }
             }
@@ -79,7 +64,14 @@ public class Registrazione {
         }
     }
 
-    public static void logIn(Utente x) {
+    public static void visualizzaAdmin(Admin x) {
+        for (int i = 0; i < x.nome.size(); i++) {
+            System.out.println("Nome:" + x.nome.get(i));
+            System.out.println("---------------------------------------");
+        }
+    }
+
+    public static void loginAdmin(Admin x) {
         boolean exit = false;
 
         while (!exit) {
@@ -100,11 +92,8 @@ public class Registrazione {
                 String passTemp = stringa.nextLine();
                 if (x.password.get(i).equals(passTemp)) {
                     System.out.println("Password Corretta");
-                    x.budget.add(i, (int) (Math.random() * 50));
                     exit = true;
-                    System.out.println("Il tuo Budget: " + x.budget.get(i));
-
-                    GestioneRistorante.showFirstMenu(x, i);
+                    // MODIFICA CREA E ELIMINA PIATTO MENU DA INSERIRE
                 } else {
                     System.out.println("Password Errata riprova");
                 }
