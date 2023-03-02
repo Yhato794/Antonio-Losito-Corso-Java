@@ -28,11 +28,11 @@ public class ConnectionFibonacci {
 
     }
 
-    public ConnectionFibonacci GetConnection() {
+    public Connection GetConnection() {
 
         try {
-            ConnectionFibonacci connection = new ConnectionFibonacci(this.myUrl, this.myNome, this.myPassword);
-            System.out.println(connection != null ? "Connesso" : "Non connesso");
+            Connection connection = DriverManager.getConnection(this.myUrl, this.myNome, this.myPassword);
+            System.out.println(connection != null ? "Connesso!!!!" : "Non connesso!!!");
             return connection;
 
         } catch (Exception e) {
