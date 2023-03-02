@@ -21,7 +21,7 @@ public class EsercizioQuery {
             // Prova lettura db
 
             System.out.println("Inserisci Codice nazione");
-            String codInput = "%" + stringa.nextLine() + "%";
+            String codInput = stringa.nextLine();
             System.out.println("Inserisci controllo popolazione superiore a:");
             int popInput = interi.nextInt();
             System.out.println("Vuoi vedere il nome della nazione? 1 Si 0 No");
@@ -34,7 +34,7 @@ public class EsercizioQuery {
             else
                 tempOrd = "DESC";
 
-            String query = "SELECT country.Code, city.name, CASE WHEN 0!=? THEN country.name else 'nascosto' end as NomeNazine, country.Population FROM world.country inner join  world.city  on world.country.Code=world.city.CountryCode where country.Population >= ? and country.code like ?  Order by Population "
+            String query = "SELECT country.Code, city.name, CASE WHEN 0!=? THEN country.name else 'nascosto' end as NomeNazine, city.Population FROM world.country inner join  world.city  on world.country.Code=world.city.CountryCode where country.Population >= ? and country.code like ?  Order by city.Population "
                     + tempOrd;
             PreparedStatement stm = conn.prepareStatement(query);
             stm.setInt(1, nome);
@@ -43,21 +43,12 @@ public class EsercizioQuery {
 
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                if (nome == 1) {
-                    String tableFormat = String.format("CODICE: %s CITTA': %s NOMENAZIONE: %s POPULATION %s",
-                            rs.getString(1),
-                            rs.getString(2),
-                            rs.getString(3),
-                            rs.getString(4));
-                    System.out.println(tableFormat);
-                }else{
-                    String tableFormat = String.format("CODICE: %s CITTA': %s POPULATION %s",
-                            rs.getString(1),
-                            rs.getString(2),
-                            rs.getString(4));
-                    System.out.println(tableFormat);
-                }
-
+                String tableFormat = String.format("CODICE: %s CITTA': %s NOMENAZIONE: %s POPULATION %s",
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4));
+                System.out.println(tableFormat);
             }
         } catch (Exception e) {
             e.printStackTrace();

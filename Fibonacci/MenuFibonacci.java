@@ -1,22 +1,17 @@
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
-public class StampaSequenzaEcerca {
-    public static void main(String[] args) {
-        Programma();
-    }
+public class MenuFibonacci {
+    public static Scanner intero = new Scanner(System.in);
 
-    public static void Programma() { // Input numero da cercare e lunghezza serie
-
-        Scanner findNumber = new Scanner(System.in);
+    public void Programma() { // Input numero da cercare e lunghezza serie
 
         System.out.println("Numero da cercare ");
-        int sceltaNumeroUtente = findNumber.nextInt();
+        int sceltaNumeroUtente = intero.nextInt();
 
         System.out.println("Selezione numeri di sequenza");
-        Scanner scelta = new Scanner(System.in);
-        int loop = (scelta.nextInt() + 2);
+        int loop = (intero.nextInt() + 2);
 
         ArrayList<Integer> sequenza = new ArrayList<Integer>(Arrays.asList());
         sequenza.add(0);
@@ -24,12 +19,11 @@ public class StampaSequenzaEcerca {
         sequenza.add(1);
         sequenza = CreaSequenza(sequenza, loop);
         RicercaPD(sequenza, sceltaNumeroUtente);
-        findNumber.close();
-        scelta.close();
+
     }
 
     public static void RicercaPD(ArrayList<Integer> sequenza, int sceltaNumeroUtente) { // Ricerca e Divisione
-                                                                                        // Pari/Dispari
+        // Pari/Dispari
         boolean b = false;
         int x = 0;
         for (int i = 0; i < sequenza.size(); i++) {
@@ -48,7 +42,7 @@ public class StampaSequenzaEcerca {
     }
 
     public static ArrayList<Integer> CreaSequenza(ArrayList<Integer> sequenza, int loop) { // Creazione Successione di
-                                                                                           // Fibonacci
+        // Fibonacci
 
         if (sequenza.size() == loop) {
             return sequenza;
