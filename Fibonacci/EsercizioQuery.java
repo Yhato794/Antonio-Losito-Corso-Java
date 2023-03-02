@@ -34,7 +34,8 @@ public class EsercizioQuery {
             else
                 tempOrd = "DESC";
 
-            String query = "SELECT country.Code, city.name, CASE WHEN 0!=? THEN country.name else 'nascosto' end as NomeNazine, country.Population FROM world.country inner join  world.city  on world.country.Code=world.city.CountryCode where country.Population >= ? and country.code like ?  Order by Population "+ tempOrd;
+            String query = "SELECT country.Code, city.name, CASE WHEN 0!=? THEN country.name else 'nascosto' end as NomeNazine, country.Population FROM world.country inner join  world.city  on world.country.Code=world.city.CountryCode where country.Population >= ? and country.code like ?  Order by Population "
+                    + tempOrd;
             PreparedStatement stm = conn.prepareStatement(query);
             stm.setInt(1, nome);
             stm.setInt(2, popInput);
@@ -42,12 +43,21 @@ public class EsercizioQuery {
 
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                String tableFormat = String.format("CODICE: %s CITTA': %s NOMENAZIONE: %s POPULATION %s",
-                        rs.getString(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4));
-                System.out.println(tableFormat);
+                if (nome == 1) {
+                    String tableFormat = String.format("CODICE: %s CITTA': %s NOMENAZIONE: %s POPULATION %s",
+                            rs.getString(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getString(4));
+                    System.out.println(tableFormat);
+                }else{
+                    String tableFormat = String.format("CODICE: %s CITTA': %s POPULATION %s",
+                            rs.getString(1),
+                            rs.getString(2),
+                            rs.getString(4));
+                    System.out.println(tableFormat);
+                }
+
             }
         } catch (Exception e) {
             e.printStackTrace();
