@@ -4,9 +4,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
-import com.mysql.cj.util.DnsSrv.SrvRecord;
-
 public class EsercizioQuery {
+    public static Scanner interi = new Scanner(System.in);
+    public static Scanner stringa = new Scanner(System.in);
+
     public static void main(String[] args) {
         Connection conn = null;
 
@@ -20,24 +21,20 @@ public class EsercizioQuery {
             // Prova lettura db
 
             System.out.println("Inserisci Codice nazione");
-            Scanner nazCode = new Scanner(System.in);
-            String codInput = "%" + nazCode.nextLine() + "%";
+            String codInput = "%" + stringa.nextLine() + "%";
             System.out.println("Inserisci controllo popolazione superiore a:");
-            Scanner pop = new Scanner(System.in);
-            int popInput = pop.nextInt();
+            int popInput = interi.nextInt();
             System.out.println("Vuoi vedere il nome della nazione? 1 Si 0 No");
-            Scanner nom = new Scanner(System.in);
-            int nome = nazCode.nextInt();
+            int nome = stringa.nextInt();
             System.out.println("Ordina 1:crescente o 2:decrescente?");
-            Scanner ord = new Scanner(System.in);
-            int ordInput = ord.nextInt();
+            int ordInput = interi.nextInt();
             String tempOrd;
-            if (ordInput == 1) {
+            if (ordInput == 1)
                 tempOrd = "ASC";
-            } else {
+            else
                 tempOrd = "DESC";
-            }
-            String query = "SELECT Code, CASE WHEN 0!=? THEN name else 'nome nascosto' end as Nome, Population FROM world.country where Population >= ? && Code like (?) Order by population "+tempOrd;
+
+            String query = "SELECT country.Code, city.name, CASE WHEN 0!=? THEN country.name else 'nascosto' end as NomeNazine, country.Population FROM world.country inner join  world.city  on world.country.Code=world.city.CountryCode where country.Population >= ? and country.code like ?  Order by Population "+ tempOrd;
             PreparedStatement stm = conn.prepareStatement(query);
             stm.setInt(1, nome);
             stm.setInt(2, popInput);
@@ -45,10 +42,11 @@ public class EsercizioQuery {
 
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                String tableFormat = String.format("CODICE: %s NOME: %s POPULATION: %s",
+                String tableFormat = String.format("CODICE: %s CITTA': %s NOMENAZIONE: %s POPULATION %s",
                         rs.getString(1),
                         rs.getString(2),
-                        rs.getString(3));
+                        rs.getString(3),
+                        rs.getString(4));
                 System.out.println(tableFormat);
             }
         } catch (Exception e) {
