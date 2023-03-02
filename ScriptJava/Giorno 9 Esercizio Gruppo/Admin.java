@@ -7,7 +7,7 @@ public class Admin {
 
     ArrayList<String> nome = new ArrayList<>();
     ArrayList<String> password = new ArrayList<>();
-    private final int[] authCode = { 0000, 1111 };
+    //private final int[] authCode = { 0000, 1111 };
 
     public static void menuAdmin() {
         Admin admin = new Admin();

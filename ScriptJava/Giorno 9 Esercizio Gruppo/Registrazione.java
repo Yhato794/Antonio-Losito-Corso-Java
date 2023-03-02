@@ -6,7 +6,6 @@ public class Registrazione {
     private static Scanner interi = new Scanner(System.in);
 
     public static void main(String[] args) {
-
         Utente utenteObj = new Utente();
         showFirstMenu1(utenteObj);
 
