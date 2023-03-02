@@ -17,21 +17,7 @@ public class MenuPiattoSpeciale {
 
     }
 
-    public static void menuIngredienteSpeciale(PiattoSpeciale piatto) {
-        System.out.println("Inserisci Ingrediente personale");
-        piatto.setIngredienti(stringhe.nextLine());
-        int prezzo = piatto.getPrezzo();
-        prezzo = prezzo + 1;
-        piatto.setPrezzo(prezzo);
-        System.out.println("Vuoi inserire un altro ingrediente 1:Si 2:No vai a recap ordine");
-        int scelta1 = interi.nextInt();
-        if (scelta1 == 2) {
-            confermaOrdina(piatto);
-        } else {
-            menuIngredienteSpeciale(piatto);
-        }
-    }
-
+       
     public static void menuPrincipale() {
 
         PiattoSpeciale piatto = new PiattoSpeciale();
@@ -47,6 +33,21 @@ public class MenuPiattoSpeciale {
             ingresso();
 
     }
+    public static void menuIngredienteSpeciale(PiattoSpeciale piatto) {
+        System.out.println("Inserisci Ingrediente personale");
+        piatto.setIngredienti(stringhe.nextLine());
+        int prezzo = piatto.getPrezzo();
+        prezzo = prezzo + 1;
+        piatto.setPrezzo(prezzo);
+        System.out.println("Vuoi inserire un altro ingrediente 1:Si 2:No vai a recap ordine");
+        int scelta1 = interi.nextInt();
+        if (scelta1 == 2) {
+            confermaOrdina(piatto);
+        } else {
+            menuIngredienteSpeciale(piatto);
+        }
+    }
+
 
     public static void menuIngrediente(PiattoSpeciale piatto) {
         System.out.println("Scegli ingrediente 1: Carne 2:Pesce 3:Annulla Ordine");
@@ -78,7 +79,7 @@ public class MenuPiattoSpeciale {
         for (int i = 0; i < piatto.ingredienti.size(); i++) {
             System.out.print(piatto.ingredienti.get(i) + " ");
         }
-        System.out.println("Prezzo:" + piatto.getPrezzo());
+        System.out.println("Prezzo: " + piatto.getPrezzo());
         System.out.println("Confermare? 1 Si 2 No torna al menu principale");
         int scelta = interi.nextInt();
         if (scelta == 1) {
