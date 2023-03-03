@@ -42,7 +42,6 @@ public class Biblioteca {
         int scelta = stringhe.nextInt();
         if (libriBib.get(scelta).getnDisponibile() != 0) {
             libriBib.get(scelta).setnDisponibile(libriBib.get(scelta).getnDisponibile() - 1);
-            libriBib.get(scelta).setNoleggiato(true);
             System.out.println("Hai noleggiato il libro");
         } else {
             System.out.println("Libro non disponibile");
