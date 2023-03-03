@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class Admin {
     public static Scanner stringhe = new Scanner(System.in);
     public static Scanner interi = new Scanner(System.in);
@@ -110,13 +109,13 @@ public class Admin {
         menuAdmin();
 
     }
+
     public static void visualizzaUsers(int a) {
 
         for (int i = 0; i < mainSoftware.utentiInMemoria.size(); i++) {
             System.out.println("ID: " + i + " Nome: " + mainSoftware.utentiInMemoria.get(i).getNome() + " Email: "
                     + mainSoftware.utentiInMemoria.get(i).getEmail());
         }
-        
 
     }
 
