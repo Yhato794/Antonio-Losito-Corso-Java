@@ -2,7 +2,7 @@ public class Libro {
     private String nomeLibro;
     private int nInprestito;
     private int nDisponibile;
-    private boolean noleggiato=false;
+
 
     public Libro(String nome, int nInprestito, int nDisponibile) {
         this.nomeLibro = nome;
@@ -10,15 +10,6 @@ public class Libro {
         this.nDisponibile = nDisponibile;
 
     }
-
-    public boolean isNoleggiato() {
-        return noleggiato;
-    }
-
-    public void setNoleggiato(boolean noleggiato) {
-        this.noleggiato = noleggiato;
-    }
-
 
     public String getNomeLibro() {
         return nomeLibro;
