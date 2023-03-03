@@ -6,6 +6,8 @@ public class Biblioteca {
     public static Scanner stringhe = new Scanner(System.in);
     public static ArrayList<Libro> libriBib = new ArrayList<Libro>();
 
+  
+
     public static void menuPrincipale() { // MENU PRINCIPALE
         System.out.println(
                 "Quale Operazione vuoi eseguire?\n1:Lista libri disponibili \n2:Lista libri in prestito \n3:Noleggia libro \n4:Restituisci Libro \n5:Aggiungi Libro \n6:Rimuovi Libro \n7:Esci");
@@ -49,11 +51,11 @@ public class Biblioteca {
 
     }
 
-    public static void stampaLibriInBib() { // STAMPA TUTTI I LIBRI IN MEMORIA ANCHE QUELLI NON DISPONIBILI O
+    public static void stampaLibriInBib() { // STAMPA TUTTI I LIBRI IN MEMORIA ANCHE QUELLI NON DISPONIBILI O 
         for (int i = 0; i < libriBib.size(); i++) {
-
-            System.out.print("ID: " + i + " Nome :" + libriBib.get(i).getNomeLibro() + " ");
-            System.out.println("Disponibilità :" + libriBib.get(i).getnDisponibile());
+           
+                System.out.print("ID: " + i + " Nome :" + libriBib.get(i).getNomeLibro() + " ");
+                System.out.println("Disponibilità :" + libriBib.get(i).getnDisponibile());
 
         }
     }
@@ -122,8 +124,6 @@ public class Biblioteca {
         if (trovato) {
             System.out.println("Libro restituito");
             libriBib.get(i).setnDisponibile(libriBib.get(i).getnDisponibile() + 1);
-            libriBib.get(i).setnInprestito(libriBib.get(i).getnInprestito() - 1);
-
         } else {
             System.out.println("Libro non trovato vuoi aggiungerlo? 1:Si 2:No");
             scelta1 = interi.nextInt();
