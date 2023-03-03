@@ -8,7 +8,7 @@ public class EsercizioQuery {
     public static Scanner interi = new Scanner(System.in);
     public static Scanner stringa = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
         Connection conn = null;
 
         try {
