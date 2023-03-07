@@ -7,7 +7,8 @@ public class MainFibonacci {
         //MenuFibonacci myMenu = new MenuFibonacci();
         //ConnectionFibonacci conn = new ConnectionFibonacci("jdbc:mysql://localhost:3306/fibonacci", "root", "root");
         //conn.GetConnection();
-        MenuFibonacci.Programma();
+        MenuFibonacci prog=new MenuFibonacci();
+        prog.MenuPrincipale();
 
     }
 
