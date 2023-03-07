@@ -11,14 +11,14 @@ public class MenuFibonacci {
         boolean esecuzione = true;
 
         do {
-            int loop = inputSelezione("Lunghezza sequenza");
             int scelta = inputSelezione("1: Cerca numero 2: Stampa Pari Dispari 3:Esci");
             switch (scelta) {
                 case 1:
                     int sceltaNumeroUtente = inputSelezione("Numero da cercare");
-                    seqz.Ricerca(sceltaNumeroUtente, loop);
+                    seqz.Ricerca(sceltaNumeroUtente);
                     break;
                 case 2:
+                    int loop = inputSelezione("Lunghezza sequenza");
                     seqz.pariDispari(loop);
                     break;
                 case 3:
