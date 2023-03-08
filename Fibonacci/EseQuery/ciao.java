@@ -1,12 +1,12 @@
 public class ciao { 
 
 
-    public static void main(String[] args) {
-        int x = (int) (Math.random() * 2);
-        System.out.println("Valore di partenza " + x);
-        NumeroRandom(x);
-       
-    }
+// public static void main(String[] args) {
+// int x = (int) (Math.random() * 2);
+// System.out.println("Valore di partenza " + x);
+// NumeroRandom(x);
+
+// }
 
     public static int NumeroRandom(int x) {
         // Calcoli del metodo
