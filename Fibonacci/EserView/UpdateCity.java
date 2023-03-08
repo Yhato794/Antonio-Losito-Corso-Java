@@ -19,23 +19,27 @@ public class UpdateCity {
             } else {
                 System.out.println("Connessione fallita");
             }
-            String query = "SELECT * FROM world.city";
+
+            String query = "SELECT * FROM world.city where CountryCode like 'ITA'";
             boolean errore = false;
             Statement prpStm = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet rs = prpStm.executeQuery(query);
-
+            
             System.out.println("Inserisci nome città:");
             String nomeCitTemp = stringhe.nextLine();
-            rs.first();
             
+            rs.beforeFirst();
             while (rs.next()) {
                 if (nomeCitTemp.equals(rs.getString(2))) {
                     errore = true;
-                    System.out.println("Città già presente"+rs.getString(2));
+                    System.out.println("Città già presente");
+                    break;
                 }
+                
             }
-            rs.moveToInsertRow();;
+           
             if (!errore) {
+                rs.moveToInsertRow();
                 System.out.println("Inserisci Regione Città");
                 String nomeRegTemp = stringhe.nextLine();
                 System.out.println("Inserisci Popolazione");
@@ -48,7 +52,8 @@ public class UpdateCity {
                 rs.moveToCurrentRow();
                 System.out.println("Città aggiunta");
             }
-            rs.first();
+
+            rs.beforeFirst();
             stampRS(rs);
 
         } catch (Exception e) {
