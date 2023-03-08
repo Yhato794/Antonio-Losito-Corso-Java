@@ -4,8 +4,8 @@ public class Auto extends Veicolo {
     private String tipoCarburante;
     private int consumoCarburante;
 
-    public Auto(String marca, String modello, int nPorte, String tipoCarburante, int consumoCarburante) {
-        super(marca, modello);
+    public Auto(String marca, String modello, int annoImmatricolazione, int nPorte, String tipoCarburante, int consumoCarburante) {
+        super(marca, modello,annoImmatricolazione);
         this.nPorte = nPorte;
         this.tipoCarburante = tipoCarburante;
         this.consumoCarburante = consumoCarburante;

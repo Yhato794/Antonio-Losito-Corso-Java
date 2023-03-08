@@ -37,13 +37,15 @@ public class Concessionaria {
         String inputMarca = stringhe.nextLine();
         System.out.println("Inserisci modello");
         String inputModello = stringhe.nextLine();
+        System.out.println("Inserisci anno immatricolazione");
+        int inputAnnoImm = interi.nextInt();
         System.out.println("Inserisci n porte");
         int inputNPorte = interi.nextInt();
         System.out.println("Inserisci tipo carburante");
         String inputTipoCarb = stringhe.nextLine();
         System.out.println("Inserisci consumo carburante");
         int inputConsCarb = interi.nextInt();
-        Auto temp = new Auto(inputMarca, inputModello, inputNPorte, inputTipoCarb, inputConsCarb);
+        Auto temp = new Auto(inputMarca, inputModello,inputAnnoImm, inputNPorte, inputTipoCarb, inputConsCarb);
         return temp;
 
     }
@@ -54,13 +56,15 @@ public class Concessionaria {
         String inputMarca = stringhe.nextLine();
         System.out.println("Inserisci modello");
         String inputModello = stringhe.nextLine();
+        System.out.println("Inserisci anno immatricolazione");
+        int inputAnnoImm = interi.nextInt();
         System.out.println("Inserisci cilindrata");
         int inputCilindrata = interi.nextInt();
         System.out.println("Inserisci tipologia moto");
         String inputTipoMoto = stringhe.nextLine();
         System.out.println("Inserisci potenza");
         int inputPotenza = interi.nextInt();
-        Moto temp = new Moto(inputMarca, inputModello, inputCilindrata, inputTipoMoto, inputPotenza);
+        Moto temp = new Moto(inputMarca, inputModello,inputAnnoImm, inputCilindrata, inputTipoMoto, inputPotenza);
         return temp;
 
     }
@@ -70,6 +74,7 @@ public class Concessionaria {
         for (int i = 0; i < auto.size(); i++) {
             System.out.println("Modello auto: " + auto.get(i).getModello());
             System.out.println("Marca auto: " + auto.get(i).getMarca());
+            System.out.println("Anno immatrocolazione "+auto.get(i).getAnnoImmatricolazione());
             System.out.println("Numero porte auto: " + auto.get(i).getnPorte());
             System.out.println("Tipo carburante auto: " + auto.get(i).getTipoCarburante());
             System.out.println("Consumo auto: " + auto.get(i).getConsumoCarburante());
@@ -83,6 +88,7 @@ public class Concessionaria {
         for (int i = 0; i < moto.size(); i++) {
             System.out.println("Modello moto: " + moto.get(i).getModello());
             System.out.println("Marca moto: " + moto.get(i).getModello());
+            System.out.println("Anno immatrocolazione "+moto.get(i).getAnnoImmatricolazione());
             System.out.println("Cilindrata moto: " + moto.get(i).getCilindrata());
             System.out.println("Tipologia moto: " + moto.get(i).getTipologia());
             System.out.println("Potenza moto: " + moto.get(i).getPotenza());
