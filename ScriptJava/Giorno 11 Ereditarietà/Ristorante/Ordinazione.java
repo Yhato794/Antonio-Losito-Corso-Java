@@ -1,7 +1,7 @@
 public class Ordinazione {
 
     private int prezzo;
-    private int incassoTotale;
+    private static int incassoTotale;
 
     public Ordinazione(int prezzo){
         this.prezzo=prezzo;
@@ -17,15 +17,12 @@ public class Ordinazione {
     }
 
 
-    public int getIncassoTotale() {
+    public static int getIncassoTotale() {
         return incassoTotale;
     }
 
-
-
-
-    public void setIncassoTotale(int prezzo) {
-        this.incassoTotale = this.incassoTotale+prezzo;
+    public static void setIncassoTotale(int prezzo) {
+        incassoTotale = incassoTotale+prezzo;
     }
 
 }

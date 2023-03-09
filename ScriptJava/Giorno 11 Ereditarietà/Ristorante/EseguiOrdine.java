@@ -5,7 +5,6 @@ public class EseguiOrdine {
     public static Scanner stringhe=new Scanner(System.in);
     public static void main(String[] args) {
         Menu myMenu = new Menu();
-        Ordinazione incassoTotale=new Ordinazione(0);
         Piatto p = new Piatto("Bolognese", "Pancetta", "Cheff Pippo",15);
         Piatto p1 = new Piatto("Spaghetti", "Cacio e pepe", "Cheff Massimo",12);
         Piatto p2 = new Piatto("Gnocchi", "Pomodoro e basilico", "Cheff Francesco",14);
@@ -25,15 +24,20 @@ public class EseguiOrdine {
                 myMenu.stampaMenu();
                 System.out.println("Quale piatto vuoi ordinare?");
                 int sceltaPiatto=interi.nextInt();
-                Ordinazione myOrd=new Ordinazione(myMenu.getPiatto(sceltaPiatto-1).getPrezzo());
-                incassoTotale.setIncassoTotale(myOrd.getPrezzo());
-                System.out.println("Piatto ordinato");
+                if(sceltaPiatto<=4){
+                    Ordinazione myOrd=new Ordinazione(myMenu.getPiatto(sceltaPiatto-1).getPrezzo());
+                    Ordinazione.setIncassoTotale(myOrd.getPrezzo());
+                    System.out.println("Piatto ordinato");
+                }else{
+                    System.out.println("ERRORE");
+                }
             }else{
                 uscita=true;
             }
         }
         
         
-       System.out.println("Incasso di oggi: "+incassoTotale.getIncassoTotale());
+       System.out.println("Incasso di oggi: "+Ordinazione.getIncassoTotale());
     }
+
 }
