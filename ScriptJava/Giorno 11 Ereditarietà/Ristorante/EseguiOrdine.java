@@ -30,10 +30,6 @@ public class EseguiOrdine {
                 System.out.println("Piatto ordinato");
             }else{
                 uscita=true;
-            }
-        }
+            }}
         
-        
-       System.out.println("Incasso di oggi: "+incassoTotale.getIncassoTotale());
-    }
-}
+       System.out.println("Incasso di oggi: "+incassoTotale.getIncassoTotale());}}
