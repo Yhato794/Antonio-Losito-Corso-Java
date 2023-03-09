@@ -19,22 +19,22 @@ public class Menucalc {
                 switch (scelta) {
                     case 1:
                         risultato[i] = calco.addizione(num1, num2);
-                        System.out.println(risultato[i]);
+                        System.out.println("Risultato: " + risultato[i]);
                         i++;
                         break;
                     case 2:
                         risultato[i] = calco.sottrazione(num1, num2);
-                        System.out.println(risultato[i]);
+                        System.out.println("Risultato: " + risultato[i]);
                         i++;
                         break;
                     case 3:
                         risultato[i] = calco.moltiplicazione(num1, num2);
-                        System.out.println(risultato[i]);
+                        System.out.println("Risultato: " + risultato[i]);
                         i++;
                         break;
                     case 4:
                         risultato[i] = calco.divisione(num1, num2);
-                        System.out.println(risultato[i]);
+                        System.out.println("Risultato: " + risultato[i]);
                         i++;
                         break;
                     default:
@@ -46,7 +46,7 @@ public class Menucalc {
                 System.out.println("Memoria risultati piena");
             }
         }
-        for (int y = 0; i < 4; i++) {
+        for (int y = 0; y < 4; y++) {
             System.out.println("Risultato n " + y + " " + risultato[y]);
         }
 
@@ -66,7 +66,7 @@ public class Menucalc {
                 errore = true;
             } finally {
                 if (errore)
-                    System.out.println("Hai sbagliato");
+                    System.out.println("Hai sbagliato Riprova");
                 else
                     System.out.println("Input corretto");
             }

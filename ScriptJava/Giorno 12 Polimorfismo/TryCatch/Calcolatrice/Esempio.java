@@ -6,11 +6,11 @@ public class Esempio {
 
     public static void main(String[] args) {
 
-        // Integer myinteger= 55;
-        // String ciao="55";
-        // int myint=myinteger.intValue();
-        // String myString=myinteger.toString();
-        // System.out.println(myString);
+        Integer myinteger= 55;
+
+        int myint=myinteger.intValue();
+        String myString=myinteger.toString();
+        System.out.println(myString);
         boolean errore = true;
         int i=0;
         do {
