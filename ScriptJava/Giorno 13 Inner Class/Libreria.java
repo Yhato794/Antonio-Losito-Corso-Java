@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Libreria {
-    
+
     public static Scanner interi = new Scanner(System.in);
     public static Scanner stringhe = new Scanner(System.in);
     private int numerolibri;
@@ -43,15 +43,18 @@ public class Libreria {
     }
 
     public void aggiungiLibro() {
+
         System.out.println("Nome libro:");
         Libreria.Libro libroDaAggiungere = Libreria.creaLib();
         libroDaAggiungere.setNome(stringhe.nextLine());
         System.out.println("Genere:");
         libroDaAggiungere.setGenere(stringhe.nextLine());
         numerolibri++;
+
     }
 
     public static void main(String[] args) {
+
         Libreria myLib = new Libreria();
         boolean uscita = true;
         while (uscita) {
@@ -62,7 +65,6 @@ public class Libreria {
             } else {
                 uscita = false;
             }
-
         }
         System.out.println("Libri inseriti oggi " + myLib.getNumerolibri());
     }
