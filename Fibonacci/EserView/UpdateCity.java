@@ -1,9 +1,9 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
-import java.util.Scanner;
 import java.sql.ResultSetMetaData;
 import java.sql.ResultSet;
+import java.util.Scanner;
 
 public class UpdateCity {
     public static Scanner stringhe = new Scanner(System.in);
@@ -24,26 +24,29 @@ public class UpdateCity {
             boolean errore = false;
             Statement prpStm = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet rs = prpStm.executeQuery(query);
-            
+
             System.out.println("Inserisci nome città:");
             String nomeCitTemp = stringhe.nextLine();
-            
+            System.out.println("Inserisci Regione Città");
+            String nomeRegTemp = stringhe.nextLine();
+
             rs.beforeFirst();
             while (rs.next()) {
                 if (nomeCitTemp.equals(rs.getString(2))) {
-                    errore = true;
-                    System.out.println("Città già presente");
+                    if (nomeRegTemp.equals(rs.getObject("District"))) {
+                        errore = true;
+                        System.out.println("Città già presente");
+                    }
                     break;
                 }
-                
+
             }
-           
+
             if (!errore) {
-                rs.moveToInsertRow();
-                System.out.println("Inserisci Regione Città");
-                String nomeRegTemp = stringhe.nextLine();
+
                 System.out.println("Inserisci Popolazione");
                 int popCitTemp = interi.nextInt();
+                rs.moveToInsertRow();
                 rs.updateString("Name", nomeCitTemp);
                 rs.updateString("CountryCode", "ITA");
                 rs.updateString("District", nomeRegTemp);
@@ -64,7 +67,7 @@ public class UpdateCity {
 
     public static void stampRS(ResultSet rs) {
         try {
-            // rs.first();
+            // rs.beforeFirst();
             ResultSetMetaData meta = rs.getMetaData();
             int numeroColonne = meta.getColumnCount();
             while (rs.next()) {
@@ -76,7 +79,7 @@ public class UpdateCity {
             }
 
         } catch (Exception e) {
-            // TODO: handle exception
+
         }
     }
 
