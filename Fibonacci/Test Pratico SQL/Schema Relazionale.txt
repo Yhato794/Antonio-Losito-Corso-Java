@@ -1,0 +1,33 @@
+a) Creare uno schema relazionale che rappresenta gli autori e i vari romanzi scritti.
+Per ogni autore deve essere indicato: nome(P.K.), l’anno di nascita, l’anno morte(se è deceduto) e la nazione.
+Per ogni libro deve essere indicato: il titolo del libro, l’autore(F.K.) e l’anno di pubblicazione.
+Nelle note deve essere specificato per ogni colonna il tipo di dato e il vincolo attribuito o come deve essere gestito.
+
+b) Sfruttando JDBC creare uno script JAVA che vada a creare il database “biblioteca” inserendo le tabelle con i vincoli recuperati dallo schema relazionale creato in precedenza nel punto a.
+
+c) Una volta creato il database, creare uno script JAVA che permette all’utente:
+di inserire nuovi autori e nuovi libri se l’autore è presente (è obbligatorio utilizzare i metodi della classe ResultSet);
+di stampare tutti gli autori;
+di stampare i libri di un autore.
+
+TABLE AUTORI(nome_autore(PK), anno_nasciata, anno_morte)
+TABLE ROMANZI(titolo, autore(FK) , anno_pubblicazione )
+
+
+TABLE AUTORI 
+nome_autore PK varchar(50) questa non ce bisogno di specificare non null o unique perché è PK
+anno_nasciata date not null 
+anno_morte date not null constraint anno_morte > anno_nasciata     *** DA GESTIRE AL MOMENTO DEL INSERIMENTO PERCHE' SQL E' STUPIDO ***
+
+TABLE ROMANZI
+titolo varchar(255) not null
+autore varchar(50) FK on nome_autore 
+anno_pubblicazione date not null
+
+
+
+
+CAMBIATO LE DATE AD INT GLI ULTIMI 5 MIN NON HO TESTATO UN GRANCHE' DOVREBBE FUNZIONARE 
+
+P.S ODIO LE DATE :D
+
