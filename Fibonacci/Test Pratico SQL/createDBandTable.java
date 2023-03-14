@@ -27,7 +27,7 @@ public class createDBandTable {
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BIBLIOTECA", "root", "root");
             Statement stmt = conn.createStatement();
-            String sql = "CREATE TABLE Autori (nome_autore varchar(50) primary key, anno_nasciata int not null, anno_morte int not null);";
+            String sql = "CREATE TABLE Autori (nome_autore varchar(50) primary key, anno_nascita int not null, anno_morte int not null);";
             stmt.executeUpdate(sql);
             System.out.println("Table Autori Create Successfully");
             conn.close();
